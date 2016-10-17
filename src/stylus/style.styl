@@ -1,0 +1,114 @@
+$screen = 600px
+
+
+html
+  box-sizing: border-box
+
+
+*,
+*::before,
+*::after
+  box-sizing: inherit
+
+
+body
+  margin: 0
+
+
+.gallery
+  position: relative
+  width 100%
+  height 100vh
+  overflow hidden
+
+
+.gallery-wrap
+  position: relative
+  height 100%
+  font-size 0
+  white-space nowrap
+  overflow-x scroll
+
+  @media (min-width: $screen)
+    white-space: normal
+    overflow-x visible
+    overflow-y auto
+
+  &.js
+    overflow-x visible!important
+    overflow-y visible!important
+    transition all 1s
+
+
+.previous,
+.next
+  content: ""
+  position: absolute
+  z-index: 100
+  top 50%
+  width 35px
+  height 35px
+  border-radius 50%
+  transform translateY(-50%)
+  background-position: center
+  background-repeat no-repeat
+  cursor: pointer
+  transition background 0.3s
+
+  &:hover
+    background-color: #ccc
+
+
+.previous
+  left 20px
+  background-image url('img/svg/left.svg')
+
+  @media (min-width: $screen)
+    background-image: url('img/svg/up.svg')
+    left 50%
+    top 20px
+    transform translateX(-50%)
+
+
+.next
+  right 20px
+  background-image url('img/svg/right.svg')
+
+  @media (min-width: $screen)
+    background-image: url('img/svg/down.svg')
+    right auto
+    top auto
+    bottom 20px
+    left 50%
+    transform translateX(-50%)
+
+
+.image-wrap
+  position: relative
+  display: inline-block
+  vertical-align: top
+  width 100%
+  height 100%
+  overflow: hidden
+
+  @media (min-width: $screen)
+    width calc(100% / 3)
+
+  &:nth-child(even)
+    background-color: #eee
+
+  img
+    content: ""
+    position: absolute
+    display: block
+    top 50%
+    left 50%
+    width 100%
+    height auto
+    transform translate(-50%, -50%)
+
+
+.hidden
+  display: none
+  visibility hidden
+
